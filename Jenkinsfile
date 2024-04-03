@@ -26,16 +26,16 @@ pipeline {
             }
         }
     }
-    post {
-        success {
-            sh '''
-                bash scripts/deployment.sh SUCCESS🟢
-            '''
-        }
-        failure {
-            sh '''
-                bash scripts/deployment.sh FAILED🔴
-            '''
-        }
-    }
+    // post {
+    //     success {
+    //         sh '''
+    //             bash scripts/deployment.sh SUCCESS🟢
+    //         '''
+    //     }
+    //     failure {
+    //         sh '''
+    //             bash scripts/deployment.sh FAILED🔴
+    //         '''
+    //     }
+    // }
 }
