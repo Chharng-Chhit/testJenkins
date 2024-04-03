@@ -25,17 +25,18 @@ pipeline {
                 sh 'php artisan test'
             }
         }
+        stage('Debug') {
+            steps {
+                sh 'ls -la scripts'
+            }
+        }
     }
     post {
         success {
-            sh '''
-                bash scripts/deployment.sh SUCCESS🟢
-            '''
+            sh '/absolute/path/to/scripts/deployment.sh SUCCESS🟢'
         }
         failure {
-            sh '''
-                bash scripts/deployment.sh FAILED🔴
-            '''
+            sh '/absolute/path/to/scripts/deployment.sh FAILED🔴'
         }
     }
 }
