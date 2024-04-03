@@ -28,19 +28,19 @@ pipeline {
         // }
     }
     post {
-        success {
-            mail(
-            subject : "Pipeline Successful",
-            body    : "The Jenkins pipeline has succuess",
-            to      : "chhit085@gmail.com"
-            )
+    success {
+        mail(
+            subject: "Pipeline Successful",
+            body: "The Jenkins pipeline has succeeded.\n\n${currentBuild.currentResult}: ${currentBuild.description ?: 'No additional information available.'}",
+            to: "chhit085@gmail.com"
+        )
     }
-        failure {
-            mail(
-                subject : "Pipeline failed",
-                body    : "The Jenkins pipeline has failed",
-                to      : "chhit085@gmail.com"
-            )
-        }
+    failure {
+        mail(
+            subject: "Pipeline Failed",
+            body: "The Jenkins pipeline has failed.\n\n${currentBuild.currentResult}: ${currentBuild.description ?: 'No additional information available.'}",
+            to: "chhit085@gmail.com"
+        )
     }
+}
 }
