@@ -1,9 +1,5 @@
 pipeline {
     agent any // windows agent, Jenkins-Laravel (other machine)
-    environment {
-        BOT_TOKEN = '6721183761:AAGp1RwuFRR8uJ9GwNxXRZibOxYk7QxNs18'
-        CHAT_ID = '-4121372419'
-    }
     stages {
         stage('Fetch from GitHub') { // build steps
             steps {
@@ -25,18 +21,26 @@ pipeline {
                 sh 'php artisan test'
             }
         }
-        stage('Debug') {
-            steps {
-                sh 'ls -la scripts'
-            }
-        }
+        // stage('Notification') {
+        //     steps {
+        //         mail bcc: '', body: '', cc: '', from: '', replyTo: '', subject: 'Jenkins Notification', to: 'chhit085@gmail.com'
+        //     }
+        // }
     }
     post {
         success {
-            sh '/absolute/path/to/scripts/deployment.sh SUCCESS🟢'
-        }
+            mail(
+            subject : "Pipeline Successful",
+            body    : "The Jenkins pipeline has succuess",
+            to      : "chhit085@gmail.com"
+            )
+    }
         failure {
-            sh '/absolute/path/to/scripts/deployment.sh FAILED🔴'
+            mail(
+                subject : "Pipeline failed",
+                body    : "The Jenkins pipeline has failed",
+                to      : "chhit085@gmail.com"
+            )
         }
     }
 }
