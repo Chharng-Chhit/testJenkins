@@ -1,8 +1,8 @@
 pipeline {
     agent any // windows agent, Jenkins-Laravel (other machine)
     environment {
-        BOT_TOKEN = '6451695822:AAEvuVexMDi5jgKLycHSe_q45vvSFrsp9b8'
-        CHAT_ID = '-1002142392049'
+        BOT_TOKEN = '6721183761:AAGp1RwuFRR8uJ9GwNxXRZibOxYk7QxNs18'
+        CHAT_ID = '-4121372419'
     }
     stages {
         stage('Fetch from GitHub') { // build steps
